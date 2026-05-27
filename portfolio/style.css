@@ -152,6 +152,10 @@ section h2 {
   margin-top: 20px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* O container da foto - cria o quadrado */
 .profile-picture-frame {
   width: 200px; /* Defina a largura do quadrado (ex: 200px) */
