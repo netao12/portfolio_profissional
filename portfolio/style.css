@@ -152,6 +152,28 @@ section h2 {
   margin-top: 20px;
 }
 
+/* Regras aplicadas apenas quando a tela for menor que 768px (celulares e tablets pequenos) */
+@media (max-width: 768px) {
+  
+  .sobre-mim-container {
+    /* Muda o alinhamento de linha (lado a lado) para coluna (um embaixo do outro) */
+    flex-direction: column; 
+    
+    /* Centraliza o texto para ficar mais elegante no celular */
+    text-align: center; 
+    
+    /* Diminui um pouco o espaço entre a foto e o texto */
+    gap: 15px; 
+  }
+
+  /* Opcional: Se achar que a foto ficou muito grande na tela do celular, você pode diminuir o tamanho do quadrado aqui */
+  .profile-picture-frame {
+    width: 150px;
+    height: 150px;
+  }
+  
+}
+
 html {
     scroll-behavior: smooth;
 }
