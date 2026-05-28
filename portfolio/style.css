@@ -9,8 +9,8 @@
 
 body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: #f8fafc; /* Fundo claro e limpo (levemente azulado/acinzentado) */
-    color: #334155; /* Texto em tom grafite escuro para melhor leitura */
+    background-color: #0b0f19; /* Tema escuro profissional (Deep Space/Slate) */
+    color: #e2e8f0; /* Texto claro em tom cinza azulado para leitura confortável */
     line-height: 1.6;
 }
 
@@ -27,13 +27,18 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Sombra com um leve toque neon cian bem sutil */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 1px 0px rgba(0, 242, 254, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 header h1 {
     font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #ffffff 60%, #00f2fe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 nav ul {
@@ -47,12 +52,13 @@ nav a {
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-/* Efeito ao passar o mouse nos links */
+/* Efeito ao passar o mouse nos links - Brilho Neon Sutil */
 nav a:hover {
-    color: #ffffff;
+    color: #00f2fe;
+    text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
 }
 
 /* ==========================================================================
@@ -62,18 +68,32 @@ section {
     max-width: 900px;
     margin: 3rem auto;
     padding: 2.5rem;
-    background-color: #ffffff; /* Fundo branco para destacar o conteúdo */
-    border-radius: 8px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    background-color: #131c2e; /* Fundo escuro azulado para destacar o conteúdo */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* Títulos das Seções */
 section h2 {
     font-size: 1.6rem;
-    color: #1e293b;
+    color: #ffffff;
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid #e2e8f0; /* Linha divisória sutil */
+    border-bottom: 2px solid #1e293b; /* Linha divisória sutil */
+    position: relative;
+}
+
+/* Detalhe neon abaixo do título da seção */
+section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #00f2fe, #4f46e5);
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
 }
 
 /* ==========================================================================
@@ -86,27 +106,27 @@ section h2 {
 }
 
 .projeto {
-    background-color: #f1f5f9; /* Fundo cinza claro para os cards de projetos */
+    background-color: #1e293b; /* Fundo cinza claro adaptado para o escuro profissional */
     padding: 1.5rem;
-    border-radius: 6px;
-    border-left: 4px solid #64748b; /* Detalhe lateral em cinza profissional */
+    border-radius: 8px;
+    border-left: 4px solid #00f2fe; /* Detalhe lateral agora em Neon Cian */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Efeito sutil ao passar o mouse no projeto */
 .projeto:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.15);
 }
 
 .projeto h3 {
-    color: #0f172a;
+    color: #ffffff;
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
 }
 
 .projeto p {
-    color: #475569;
+    color: #94a3b8;
     font-size: 0.95rem;
 }
 
@@ -121,7 +141,7 @@ section h2 {
   gap: 20px;
   
   /* Padding opcional nas laterais para não grudar na tela */
-  padding: 20px;
+  padding: 20px 0; /* Ajustado para alinhar com o container interno */
 }
 
 /* 2. Ajuste nas imagens dos cards para não vazarem */
@@ -130,14 +150,7 @@ section h2 {
   height: 200px;     /* OBRIGATÓRIO: Força todas as imagens a terem a mesma altura */
   object-fit: cover; /* MÁGICO: Corta a imagem proporcionalmente para preencher o espaço sem distorcer */
   border-radius: 8px 8px 0 0; /* Arredonda só em cima, se seu card for assim */
-}
-
-/* Quando a tela for menor que 768px (tablets e celulares) */
-@media (max-width: 768px) {
-  .container-projetos {
-    /* Muda de 3 colunas para apenas 1 coluna */
-    grid-template-columns: 1fr;
-  }
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* ==========================================================================
@@ -152,28 +165,6 @@ section h2 {
   margin-top: 20px;
 }
 
-/* Regras aplicadas apenas quando a tela for menor que 768px (celulares e tablets pequenos) */
-@media (max-width: 768px) {
-  
-  .sobre-mim-container {
-    /* Muda o alinhamento de linha (lado a lado) para coluna (um embaixo do outro) */
-    flex-direction: column; 
-    
-    /* Centraliza o texto para ficar mais elegante no celular */
-    text-align: center; 
-    
-    /* Diminui um pouco o espaço entre a foto e o texto */
-    gap: 15px; 
-  }
-
-  /* Opcional: Se achar que a foto ficou muito grande na tela do celular, você pode diminuir o tamanho do quadrado aqui */
-  .profile-picture-frame {
-    width: 150px;
-    height: 150px;
-  }
-  
-}
-
 html {
     scroll-behavior: smooth;
 }
@@ -184,7 +175,8 @@ html {
   height: 200px; /* Defina a mesma altura para ser um quadrado */
   border-radius: 20px; /* Arredonda os cantos, como no seu print */
   overflow: hidden; /* Importante: corta a imagem que passar do container */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para o visual */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 242, 254, 0.2); /* Sombra e brilho neon suave */
+  border: 2px solid rgba(0, 242, 254, 0.3);
   flex-shrink: 0; /* Impede que o texto esprema o quadrado */
 }
 
@@ -195,65 +187,74 @@ html {
   
   /* ESTA É A PROPRIEDADE MÁGICA: object-fit: cover */
   /* Ela amplia e corta a foto em pé para preencher o quadrado, 
-     sem achatar ou distorcer sua foto original */
+      sem achatar ou distorcer sua foto original */
   object-fit: cover; 
   
   /* Opcional: Garante que o rosto esteja centralizado no corte */
   object-position: center; 
 }
 
+.profile-picture-frame img:hover {
+  transform: scale(1.05); /* Leve zoom ao passar o mouse */
+  transition: transform 0.3s ease;
+}
+
 /* Ajustes no texto do Sobre Mim */
 .sobre-mim-texto p {
   font-size: 1.1rem;
   line-height: 1.6;
+  color: #cbd5e1;
 }
 
 .aspiracoes {
-  color: #666;
+  color: #94a3b8;
   font-size: 0.95rem;
   margin-top: 15px;
 }
+
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 /* Estilo individual de cada card */
 .project-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
   padding: 15px;
-  background-color: #fff;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  background-color: #1e293b;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-/* Efeito de flutuar ao passar o mouse */
+/* 'Efeito de flutuar ao passar o mouse com brilho neon */
 .project-card:hover {
   transform: translateY(-5px);
+  border-color: rgba(0, 242, 254, 0.4);
+  box-shadow: 0 10px 25px rgba(0, 242, 254, 0.15);
 }
 
-.project-card img {
-  width: 100%;
-  border-radius: 4px;
-  object-fit: cover;
-}
-
-/* Estilo do botão */
+/* Estilo do botão - Gradiente Neon Profissional */
 .btn {
   display: inline-block;
-  padding: 10px 15px;
-  background-color: #007bff;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #00f2fe, #4f46e5);
   color: white;
   text-decoration: none;
-  border-radius: 5px;
-  margin-top: 10px;
+  border-radius: 6px;
+  margin-top: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
 }
 
 .btn:hover {
-  background-color: #0056b3;
+  background: linear-gradient(135deg, #00e5ff, #4338ca);
+  box-shadow: 0 6px 20px rgba(0, 242, 254, 0.5);
+  transform: translateY(-1px);
 }
 
 #contato p {
@@ -261,19 +262,20 @@ html {
     font-size: 1rem;
     display: flex;
     align-items: center;
-    color: #475569;
+    color: #cbd5e1;
 }
 
 /* Adiciona um detalhe visual antes do Email e Instagram */
 #contato p::before {
     content: "▪";
-    color: #94a3b8;
+    color: #00f2fe; /* Ponto indicador agora é Neon */
     margin-right: 10px;
     font-size: 0.8rem;
+    text-shadow: 0 0 5px #00f2fe;
 }
 
 /* ==========================================================================
-   6. RESPONSIVIDADE (PARA CELULARES)
+   6. RESPONSIVIDADE (PARA CELULARES) - UNIFICADO E OTIMIZADO
    ========================================================================== */
 @media (max-width: 768px) {
     header {
@@ -288,21 +290,103 @@ html {
     }
 
     section {
-        margin: 1.5rem;
+        margin: 1rem;
         padding: 1.5rem;
     }
-@media (max-width: 768px) {
-    /* ... seus outros estilos de celular já existentes aqui dentro ... */
 
-    .sobre-conteudo {
-        flex-direction: column; /* Empilha a foto em cima do texto no celular */
-        text-align: center;     /* Centraliza os textos */
-        gap: 1.5rem;
+    .container-projetos {
+        /* Muda de 3 colunas para apenas 1 coluna no mobile */
+        grid-template-columns: 1fr;
     }
-    
-    .foto-perfil {
-        width: 140px;  /* Reduz levemente o tamanho da foto no celular */
-        height: 140px;
+
+    .sobre-mim-container, .sobre-conteudo {
+        /* Muda o alinhamento de linha (lado a lado) para coluna (um embaixo do outro) */
+        flex-direction: column; 
+        
+        /* Centraliza o texto para ficar mais elegante no celular */
+        text-align: center; 
+        
+        /* Diminui um pouco o espaço entre a foto e o texto */
+        gap: 20px; 
+    }
+
+    /* Opcional: Ajuste do tamanho do frame da foto em telas menores */
+    .profile-picture-frame, .foto-perfil {
+        width: 150px;
+        height: 150px;
     }
 }
+
+/* ==========================================================================
+   7. BOTÕES DE CONTATO COM LOGOS (NEON CUSTOMIZADO)
+   ========================================================================== */
+.botoes-contato {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* Garante que os botões quebrem a linha no celular se faltar espaço */
+    margin-top: 1.5rem;
+}
+
+.btn-contato {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre a logo e o texto */
+    padding: 12px 24px;
+    background-color: #1e293b; /* Fundo combinando com o resto do site */
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Tamanho das logos */
+.btn-contato i {
+    font-size: 1.2rem;
+}
+
+/* --- EFEITOS HOVER (NEON PERSONALIZADO POR REDE) --- */
+
+/* Hover do Gmail (Vermelho/Neon Suave) */
+.btn-contato.gmail:hover {
+    color: #ffffff;
+    background-color: rgba(234, 67, 53, 0.1);
+    border-color: #ea4335;
+    box-shadow: 0 0 15px rgba(234, 67, 53, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Hover do LinkedIn (Azul corporativo) */
+.btn-contato.linkedin:hover {
+    color: #ffffff;
+    background-color: rgba(0, 119, 181, 0.1);
+    border-color: #0077b5;
+    box-shadow: 0 0 15px rgba(0, 119, 181, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Hover do Instagram (Rosa/Roxo Neon) */
+.btn-contato.instagram:hover {
+    color: #ffffff;
+    background-color: rgba(225, 48, 108, 0.1);
+    border-color: #e1306c;
+    box-shadow: 0 0 15px rgba(225, 48, 108, 0.4);
+    transform: translateY(-2px);
+}
+
+/* --- OTIMIZAÇÃO PARA SMARTPHONES --- */
+@media (max-width: 768px) {
+    .botoes-contato {
+        flex-direction: column; /* No celular, os botões ficam um embaixo do outro */
+        gap: 12px;
+    }
+
+    .btn-contato {
+        justify-content: center; /* Centraliza o texto e a logo dentro do botão no mobile */
+        width: 100%; /* O botão ocupa toda a largura da seção no celular */
+        padding: 14px; /* Aumenta um pouco a área do clique para os dedos */
+    }
 }
